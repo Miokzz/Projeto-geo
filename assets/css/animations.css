@@ -1,0 +1,126 @@
+/* Animações Gerais */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animação de entrada das seções */
+section {
+    animation: fadeIn 0.8s ease forwards;
+}
+
+/* Animações dos botões */
+.btn {
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.nav-link {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #2563eb;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Animação do Menu Mobile */
+.menu-btn {
+    transition: all 0.3s ease;
+}
+
+.menu-btn span {
+    transition: all 0.3s ease;
+}
+
+.menu-btn.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-btn.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Animações dos Cards */
+.tech-step {
+    transition: all 0.3s ease;
+}
+
+.tech-step:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.15);
+    border-color: #2563eb;
+}
+
+/* Animações das Tabs */
+.tab-btn {
+    transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+    background-color: #f3f4f6;
+    transform: translateY(-2px);
+}
+
+.tab-btn.active {
+    background-color: #2563eb;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+/* Animação de Loading */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading {
+    animation: spin 1s linear infinite;
+}
+
+/* Hover Effects */
+.social-link {
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    transform: translateY(-3px) scale(1.1);
+    color: #2563eb;
+}
+
+/* Animações das Cards de Resultados */
+.result-card {
+    transition: all 0.4s ease;
+}
+
+.result-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
