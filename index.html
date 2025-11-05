@@ -1,217 +1,430 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto Hídrico: Nanobolhas em São Paulo</title>
-    <!-- Chosen Palette: Semantic Water (Blue for Tech/Rivers, Green for Nature/Reservoirs, Purple for Industrial) -->
-    <!-- Application Structure Plan: SPA vertical de página única, baseada no fluxo de ciclo de vida do projeto. A navegação rola suavemente. Interações principais envolvem alternar conteúdo e atualizar gráficos para tornar a proposta dinâmica. -->
-    <!-- Visualization & Content Choices: 1. Contexto (Abas HTML/CSS). 2. Tecnologia (Diagrama HTML/CSS clicável). 3. Fluxo (HTML/CSS responsivo). 4. Mapa (Diagrama conceitual responsivo). 5. Cronograma (Timeline CSS com Abas). 6. Custos (Tabela HTML responsiva com Abas). 7. Resultados (Gráfico de Barras Chart.js com 3 botões semânticos). 8. Resumo (bloco de texto). -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/animations.css">
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 400px;
-            }
-        }
-        /* Cor semântica para abas de desafio */
-        #desafio .tab-btn.active {
-            background-color: #2563eb; /* Blue-600 */
-            color: #ffffff;
-            border-color: #2563eb;
-        }
-        /* Cor semântica para etapas de tecnologia */
-        .tech-step.active {
-            border-color: #2563eb; /* Blue-600 */
-            background-color: #eff6ff; /* Blue-50 */
-            transform: translateY(-4px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-        /* Cores semânticas para botões do gráfico */
-        #btn-tiete.active {
-            background-color: #2563eb; /* Blue-600 */
-            color: white;
-            border-color: #2563eb;
-        }
-        #btn-represa.active {
-            background-color: #16a34a; /* Green-600 */
-            color: white;
-            border-color: #16a34a;
-        }
-        #btn-industrial.active {
-            background-color: #7e22ce; /* Purple-700 */
-            color: white;
-            border-color: #7e22ce;
-        }
-        /* Cores para abas de Cronograma e Custos */
-        .tab-secondary-btn.active {
-            font-weight: 600;
-            border-bottom-width: 2px;
-        }
-        #cronograma .tab-secondary-btn.active { border-color: #2563eb; color: #1d4ed8; }
-        #cronograma .tab-secondary-btn[data-target="timeline-industrial"].active { border-color: #7e22ce; color: #7e22ce; }
-        
-        #custos .tab-secondary-btn.active { border-color: #2563eb; color: #1d4ed8; }
+<!DOCTYPE html><!DOCTYPE html>
+
+<html lang="pt-br"><html lang="pt-br">
+
+<head><head>
+
+    <meta charset="UTF-8">    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Projeto Hídrico: Nanobolhas em São Paulo</title>    <title>Projeto Hídrico: Nanobolhas em São Paulo</title>
+
+        <!-- Chosen Palette: Semantic Water (Blue for Tech/Rivers, Green for Nature/Reservoirs, Purple for Industrial) -->
+
+    <!-- Tailwind CSS -->    <!-- Application Structure Plan: SPA vertical de página única, baseada no fluxo de ciclo de vida do projeto. A navegação rola suavemente. Interações principais envolvem alternar conteúdo e atualizar gráficos para tornar a proposta dinâmica. -->
+
+    <script src="https://cdn.tailwindcss.com"></script>    <!-- Visualization & Content Choices: 1. Contexto (Abas HTML/CSS). 2. Tecnologia (Diagrama HTML/CSS clicável). 3. Fluxo (HTML/CSS responsivo). 4. Mapa (Diagrama conceitual responsivo). 5. Cronograma (Timeline CSS com Abas). 6. Custos (Tabela HTML responsiva com Abas). 7. Resultados (Gráfico de Barras Chart.js com 3 botões semânticos). 8. Resumo (bloco de texto). -->
+
+        <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <!-- Chart.js -->    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- CSS Personalizado -->    <link rel="stylesheet" href="assets/css/animations.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">        @media (min-width: 768px) {
+
+    <link rel="stylesheet" href="assets/css/animations.css">            .chart-container {
+
+</head>                height: 400px;
+
+<body class="bg-gray-50 text-gray-800 font-sans leading-relaxed">            }
+
+    <!-- Header & Navigation -->        }
+
+    <header class="bg-white shadow-md sticky top-0 z-50 w-full">        /* Cor semântica para abas de desafio */
+
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">        #desafio .tab-btn.active {
+
+            <div class="flex justify-between items-center h-16">            background-color: #2563eb; /* Blue-600 */
+
+                <div class="flex-shrink-0 flex items-center">            color: #ffffff;
+
+                    <span class="text-2xl font-bold text-blue-700">Projeto Hídrico SP</span>            border-color: #2563eb;
+
+                </div>        }
+
+                <div class="hidden md:block">        /* Cor semântica para etapas de tecnologia */
+
+                    <div class="ml-4 flex items-baseline space-x-2 lg:space-x-3">        .tech-step.active {
+
+                        <a href="#home" class="nav-link">Início</a>            border-color: #2563eb; /* Blue-600 */
+
+                        <a href="#desafio" class="nav-link">O Desafio</a>            background-color: #eff6ff; /* Blue-50 */
+
+                        <a href="#tecnologia" class="nav-link">Tecnologia</a>            transform: translateY(-4px);
+
+                        <a href="#implementacao" class="nav-link">Plano</a>            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+
+                        <a href="#mapa" class="nav-link">Mapa</a>        }
+
+                        <a href="#cronograma" class="nav-link">Cronograma</a>        /* Cores semânticas para botões do gráfico */
+
+                        <a href="#custos" class="nav-link">Custos</a>        #btn-tiete.active {
+
+                        <a href="#resultados" class="nav-link">Resultados</a>            background-color: #2563eb; /* Blue-600 */
+
+                        <a href="#resumo" class="nav-link">Resumo</a>            color: white;
+
+                    </div>            border-color: #2563eb;
+
+                </div>        }
+
+                <button id="mobile-menu-btn" class="md:hidden">        #btn-represa.active {
+
+                    <span></span>            background-color: #16a34a; /* Green-600 */
+
+                    <span></span>            color: white;
+
+                    <span></span>            border-color: #16a34a;
+
+                </button>        }
+
+            </div>        #btn-industrial.active {
+
+        </nav>            background-color: #7e22ce; /* Purple-700 */
+
+        <div id="mobile-menu" class="md:hidden hidden">            color: white;
+
+            <a href="#home" class="block px-3 py-2">Início</a>            border-color: #7e22ce;
+
+            <a href="#desafio" class="block px-3 py-2">O Desafio</a>        }
+
+            <a href="#tecnologia" class="block px-3 py-2">Tecnologia</a>        /* Cores para abas de Cronograma e Custos */
+
+            <a href="#implementacao" class="block px-3 py-2">Plano</a>        .tab-secondary-btn.active {
+
+            <a href="#mapa" class="block px-3 py-2">Mapa</a>            font-weight: 600;
+
+            <a href="#cronograma" class="block px-3 py-2">Cronograma</a>            border-bottom-width: 2px;
+
+            <a href="#custos" class="block px-3 py-2">Custos</a>        }
+
+            <a href="#resultados" class="block px-3 py-2">Resultados</a>        #cronograma .tab-secondary-btn.active { border-color: #2563eb; color: #1d4ed8; }
+
+            <a href="#resumo" class="block px-3 py-2">Resumo</a>        #cronograma .tab-secondary-btn[data-target="timeline-industrial"].active { border-color: #7e22ce; color: #7e22ce; }
+
+        </div>        
+
+    </header>        #custos .tab-secondary-btn.active { border-color: #2563eb; color: #1d4ed8; }
+
         #custos .tab-secondary-btn[data-target="cost-industrial"].active { border-color: #7e22ce; color: #7e22ce; }
 
-    </style>
-</head>
-<body class="bg-gray-50 text-gray-800 font-sans leading-relaxed">
-
-    <!-- Header & Navigation -->
-    <header class="bg-white shadow-md sticky top-0 z-50 w-full">
-        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex-shrink-0 flex items-center">
-                    <span class="text-2xl font-bold text-blue-700">Projeto Hídrico SP</span>
-                </div>
-                <div class="hidden md:block">
-                    <!-- Espaçamento ajustado para caber mais links -->
-                    <div class="ml-4 flex items-baseline space-x-2 lg:space-x-3">
-                        <a href="#home" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Início</a>
-                        <a href="#desafio" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">O Desafio</a>
-                        <a href="#tecnologia" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Tecnologia</a>
-                        <a href="#implementacao" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Plano</a>
-                        <a href="#mapa" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Mapa</a>
-                        <a href="#cronograma" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Cronograma</a>
-                        <a href="#custos" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Custos</a>
-                        <a href="#resultados" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Resultados</a>
-                        <a href="#resumo" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Resumo</a>
-                        <a href="#escala" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Futuro</a>
-                    </div>
-                </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-blue-700 focus:outline-none">
-                        <span class="sr-only">Abrir menu</span>
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </nav>
-        <!-- Links do menu mobile atualizados -->
-        <div id="mobile-menu" class="md:hidden hidden">
-            <a href="#home" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Início</a>
-            <a href="#desafio" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">O Desafio</a>
-            <a href="#tecnologia" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Tecnologia</a>
-            <a href="#implementacao" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Plano</a>
-            <a href="#mapa" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Mapa</a>
-            <a href="#cronograma" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Cronograma</a>
-            <a href="#custos" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Custos</a>
-            <a href="#resultados" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Resultados</a>
-            <a href="#resumo" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Resumo</a>
-            <a href="#escala" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Futuro</a>
-        </div>
-    </header>
-
-    <!-- Main Content -->
     <main>
 
-        <!-- Section 1: Home -->
-        <section id="home" class="min-h-screen flex items-center justify-center bg-white px-4 pt-16 -mt-16">
-            <div class="text-center max-w-4xl">
+        <!-- Home Section -->    </style>
+
+        <section id="home" class="min-h-screen flex items-center justify-center bg-white"></head>
+
+            <div class="text-center max-w-4xl px-4"><body class="bg-gray-50 text-gray-800 font-sans leading-relaxed">
+
                 <h1 class="text-4xl md:text-6xl font-extrabold text-blue-800 mb-4">Projeto Hídrico: Nanobolhas para São Paulo</h1>
-                <p class="text-xl md:text-2xl text-gray-600 leading-relaxed">Uma proposta inovadora para o tratamento e revitalização das águas urbanas, industriais e para reúso, aplicando tecnologia de ponta aos desafios hídricos da metrópole.</p>
-                <div class="mt-12">
-                    <a href="#desafio" class="px-8 py-3 bg-blue-700 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-800 transition duration-300 text-lg">Descubra o Projeto</a>
-                </div>
-            </div>
-        </section>
 
-        <!-- Section 2: O Desafio de SP -->
-        <section id="desafio" class="py-20 px-4 container mx-auto">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Os Desafios Hídricos de São Paulo</h2>
-                <p class="text-lg text-gray-600">A gestão da água em SP enfrenta múltiplos desafios. Nossas soluções de nanobolhas são desenhadas para atuar em três frentes críticas. Explore cada cenário abaixo.</p>
-            </div>
-            
-            <!-- Botões com flex-wrap para responsividade -->
-            <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8">
-                <button class="tab-btn active text-sm sm:text-base w-full md:w-auto font-semibold py-3 px-6 border-2 border-gray-300 rounded-lg shadow-sm transition duration-300 hover:border-blue-500" data-target="rios">Desafio 1: Rios Urbanos</button>
-                <button class="tab-btn text-sm sm:text-base w-full md:w-auto font-semibold py-3 px-6 border-2 border-gray-300 rounded-lg shadow-sm transition duration-300 hover:border-blue-500" data-target="represas">Desafio 2: Represas</button>
-                <button class="tab-btn text-sm sm:text-base w-full md:w-auto font-semibold py-3 px-6 border-2 border-gray-300 rounded-lg shadow-sm transition duration-300 hover:border-blue-500" data-target="industria">Desafio 3: Indústria e Reúso</button>
+                <p class="text-xl md:text-2xl text-gray-600 mb-8">Uma solução inovadora para o tratamento de águas urbanas, utilizando tecnologia de nanobolhas.</p>    <!-- Header & Navigation -->
+
+                <div class="flex flex-wrap justify-center gap-4">    <header class="bg-white shadow-md sticky top-0 z-50 w-full">
+
+                    <a href="#desafio" class="btn btn-primary">Explorar o Projeto</a>        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+
+                    <a href="#contato" class="btn btn-outline">Entre em Contato</a>            <div class="flex justify-between items-center h-16">
+
+                </div>                <div class="flex-shrink-0 flex items-center">
+
+            </div>                    <span class="text-2xl font-bold text-blue-700">Projeto Hídrico SP</span>
+
+        </section>                </div>
+
+                <div class="hidden md:block">
+
+        <!-- Desafio Section -->                    <!-- Espaçamento ajustado para caber mais links -->
+
+        <section id="desafio" class="py-20">                    <div class="ml-4 flex items-baseline space-x-2 lg:space-x-3">
+
+            <div class="container mx-auto px-4">                        <a href="#home" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Início</a>
+
+                <h2 class="section-title">O Desafio</h2>                        <a href="#desafio" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">O Desafio</a>
+
+                <div class="flex flex-wrap justify-center gap-4 mb-8">                        <a href="#tecnologia" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Tecnologia</a>
+
+                    <button class="tab-btn active" data-target="rios">Desafio 1: Rios Urbanos</button>                        <a href="#implementacao" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Plano</a>
+
+                    <button class="tab-btn" data-target="represas">Desafio 2: Represas</button>                        <a href="#mapa" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Mapa</a>
+
+                    <button class="tab-btn" data-target="industria">Desafio 3: Indústria</button>                        <a href="#cronograma" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Cronograma</a>
+
+                </div>                        <a href="#custos" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Custos</a>
+
+                        <a href="#resultados" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Resultados</a>
+
+                <div class="max-w-4xl mx-auto">                        <a href="#resumo" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Resumo</a>
+
+                    <div id="rios" class="tab-content bg-white p-8 rounded-xl shadow-lg">                        <a href="#escala" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Futuro</a>
+
+                        <h3 class="text-2xl font-bold text-blue-700 mb-3">Rios Urbanos: Recuperando a Vida</h3>                    </div>
+
+                        <p class="text-gray-700 mb-4">Os rios urbanos de São Paulo enfrentam sérios problemas de poluição e baixos níveis de oxigênio.</p>                </div>
+
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">                <div class="md:hidden">
+
+                            <li>Baixo nível de oxigênio dissolvido</li>                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-blue-700 focus:outline-none">
+
+                            <li>Alta concentração de poluentes</li>                        <span class="sr-only">Abrir menu</span>
+
+                            <li>Necessidade de recuperação da vida aquática</li>                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+
+                        </ul>                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+
+                    </div>                        </svg>
+
+                    </button>
+
+                    <div id="represas" class="tab-content hidden bg-white p-8 rounded-xl shadow-lg">                </div>
+
+                        <h3 class="text-2xl font-bold text-blue-700 mb-3">Represas: Água Pura e Segura</h3>            </div>
+
+                        <p class="text-gray-700 mb-4">As represas sofrem com problemas de qualidade da água e proliferação de algas.</p>        </nav>
+
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">        <!-- Links do menu mobile atualizados -->
+
+                            <li>Controle de algas e cianobactérias</li>        <div id="mobile-menu" class="md:hidden hidden">
+
+                            <li>Manutenção da qualidade da água</li>            <a href="#home" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Início</a>
+
+                            <li>Segurança no abastecimento</li>            <a href="#desafio" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">O Desafio</a>
+
+                        </ul>            <a href="#tecnologia" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Tecnologia</a>
+
+                    </div>            <a href="#implementacao" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Plano</a>
+
+            <a href="#mapa" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Mapa</a>
+
+                    <div id="industria" class="tab-content hidden bg-white p-8 rounded-xl shadow-lg">            <a href="#cronograma" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Cronograma</a>
+
+                        <h3 class="text-2xl font-bold text-blue-700 mb-3">Indústria: Eficiência e Reúso</h3>            <a href="#custos" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Custos</a>
+
+                        <p class="text-gray-700 mb-4">O setor industrial precisa de soluções eficientes para tratamento e reúso de água.</p>            <a href="#resultados" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Resultados</a>
+
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">            <a href="#resumo" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Resumo</a>
+
+                            <li>Tratamento de efluentes</li>            <a href="#escala" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Futuro</a>
+
+                            <li>Reúso de água</li>        </div>
+
+                            <li>Redução de custos operacionais</li>    </header>
+
+                        </ul>
+
+                    </div>    <!-- Main Content -->
+
+                </div>    <main>
+
             </div>
 
-            <div class="max-w-4xl mx-auto">
+        </section>        <!-- Section 1: Home -->
+
+        <section id="home" class="min-h-screen flex items-center justify-center bg-white px-4 pt-16 -mt-16">
+
+        <!-- Tecnologia Section -->            <div class="text-center max-w-4xl">
+
+        <section id="tecnologia" class="py-20 bg-white">                <h1 class="text-4xl md:text-6xl font-extrabold text-blue-800 mb-4">Projeto Hídrico: Nanobolhas para São Paulo</h1>
+
+            <div class="container mx-auto px-4">                <p class="text-xl md:text-2xl text-gray-600 leading-relaxed">Uma proposta inovadora para o tratamento e revitalização das águas urbanas, industriais e para reúso, aplicando tecnologia de ponta aos desafios hídricos da metrópole.</p>
+
+                <h2 class="section-title">Nossa Tecnologia</h2>                <div class="mt-12">
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">                    <a href="#desafio" class="px-8 py-3 bg-blue-700 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-800 transition duration-300 text-lg">Descubra o Projeto</a>
+
+                    <div class="tech-step" data-step="1">                </div>
+
+                        <h3 class="text-xl font-bold mb-2">Geração</h3>            </div>
+
+                        <p>Produção de nanobolhas ultrafinas para máxima eficiência.</p>        </section>
+
+                    </div>
+
+                    <div class="tech-step" data-step="2">        <!-- Section 2: O Desafio de SP -->
+
+                        <h3 class="text-xl font-bold mb-2">Injeção</h3>        <section id="desafio" class="py-20 px-4 container mx-auto">
+
+                        <p>Distribuição uniforme das nanobolhas no meio aquático.</p>            <div class="text-center max-w-3xl mx-auto mb-12">
+
+                    </div>                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Os Desafios Hídricos de São Paulo</h2>
+
+                    <div class="tech-step" data-step="3">                <p class="text-lg text-gray-600">A gestão da água em SP enfrenta múltiplos desafios. Nossas soluções de nanobolhas são desenhadas para atuar em três frentes críticas. Explore cada cenário abaixo.</p>
+
+                        <h3 class="text-xl font-bold mb-2">Tratamento</h3>            </div>
+
+                        <p>Processo de oxigenação e purificação da água.</p>            
+
+                    </div>            <!-- Botões com flex-wrap para responsividade -->
+
+                    <div class="tech-step" data-step="4">            <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8">
+
+                        <h3 class="text-xl font-bold mb-2">Monitoramento</h3>                <button class="tab-btn active text-sm sm:text-base w-full md:w-auto font-semibold py-3 px-6 border-2 border-gray-300 rounded-lg shadow-sm transition duration-300 hover:border-blue-500" data-target="rios">Desafio 1: Rios Urbanos</button>
+
+                        <p>Controle contínuo da qualidade da água.</p>                <button class="tab-btn text-sm sm:text-base w-full md:w-auto font-semibold py-3 px-6 border-2 border-gray-300 rounded-lg shadow-sm transition duration-300 hover:border-blue-500" data-target="represas">Desafio 2: Represas</button>
+
+                    </div>                <button class="tab-btn text-sm sm:text-base w-full md:w-auto font-semibold py-3 px-6 border-2 border-gray-300 rounded-lg shadow-sm transition duration-300 hover:border-blue-500" data-target="industria">Desafio 3: Indústria e Reúso</button>
+
+                </div>            </div>
+
+            </div>
+
+        </section>            <div class="max-w-4xl mx-auto">
+
                 <div id="rios" class="tab-content bg-white p-8 rounded-xl shadow-lg border border-gray-200">
-                    <h3 class="text-2xl font-bold text-blue-700 mb-3">Rios Urbanos: Recuperando a Vida</h3>
-                    <p class="text-gray-700 mb-4">Rios como o Tietê e Pinheiros sofrem com alta carga de matéria orgânica e baixíssimos níveis de oxigênio dissolvido (OD), criando "zonas mortas" incapazes de sustentar vida aquática.</p>
-                    <ul class="list-disc list-inside space-y-2 text-gray-700">
-                        <li><span class="font-semibold">Problema Principal:</span> Hipóxia (falta de oxigênio).</li>
-                        <li><span class="font-semibold text-blue-600">Solução com Nanobolhas (Oxigênio):</span> Injeção de nanobolhas de O₂ para uma aeração supereficiente, aumentando o OD de forma estável. Isso acelera a decomposição aeróbica da matéria orgânica.</li>
-                    </ul>
-                </div>
-                <div id="represas" class="tab-content hidden bg-white p-8 rounded-xl shadow-lg border border-gray-200">
-                    <h3 class="text-2xl font-bold text-green-700 mb-3">Reservatórios: Água Pura e Segura</h3>
-                    <p class="text-gray-700 mb-4">Represas como Guarapiranga e Billings sofrem com a eutrofização: excesso de nutrientes que causa a proliferação de algas e cianobactérias, gerando toxinas e odor.</p>
-                    <ul class="list-disc list-inside space-y-2 text-gray-700">
-                        <li><span class="font-semibold">Problema Principal:</span> "Florescimentos" de algas e cianobactérias.</li>
-                        <li><span class="font-semibold text-green-600">Solução com Nanobolhas (Ozônio):</span> Injeção de nanobolhas de Ozônio (O₃), um poderoso oxidante. Elas destroem a parede celular das algas, neutralizam toxinas e clarificam a água.</li>
-                    </ul>
-                </div>
-                <!-- NOVO CONTEÚDO INDUSTRIAL -->
-                <div id="industria" class="tab-content hidden bg-white p-8 rounded-xl shadow-lg border border-gray-200">
-                    <h3 class="text-2xl font-bold text-purple-700 mb-3">Indústria e Reúso: Eficiência e Compliance</h3>
-                    <p class="text-gray-700 mb-4">Fábricas, shoppings e grandes condomínios precisam tratar seus efluentes para descarte (compliance ambiental) ou para reúso (economia de água), enfrentando altos custos com químicos e lodo.</p>
-                    <ul class="list-disc list-inside space-y-2 text-gray-700">
-                        <li><span class="font-semibold">Problema Principal:</span> Alta DQO (Demanda Química de Oxigênio), turbidez e custos de tratamento.</li>
-                        <li><span class="font-semibold text-purple-600">Solução com Nanobolhas (O₃/O₂):</span> Injeção de nanobolhas de Ozônio ou Oxigênio em reatores compactos. Elas quebram moléculas complexas (DQO), removem cor, odor e micro-poluentes, reduzindo o uso de químicos e o volume de lodo gerado, viabilizando o reúso de água no processo.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
 
-        <!-- Section 3: A Tecnologia -->
-        <section id="tecnologia" class="py-20 px-4 bg-white border-t border-b border-gray-200">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">A Solução: Tecnologia de Nanobolhas</h2>
-                <p class="text-lg text-gray-600">As nanobolhas são bolhas de gás mil vezes menores que um fio de cabelo. Elas permanecem suspensas na água por dias ou semanas, atuando como um "exército" microscópico de tratamento. Clique nas etapas para ver como funcionam.</p>
+        <!-- Custos Section -->                    <h3 class="text-2xl font-bold text-blue-700 mb-3">Rios Urbanos: Recuperando a Vida</h3>
+
+        <section id="custos" class="py-20">                    <p class="text-gray-700 mb-4">Rios como o Tietê e Pinheiros sofrem com alta carga de matéria orgânica e baixíssimos níveis de oxigênio dissolvido (OD), criando "zonas mortas" incapazes de sustentar vida aquática.</p>
+
+            <div class="container mx-auto px-4">                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+
+                <h2 class="section-title">Custos e Investimentos</h2>                        <li><span class="font-semibold">Problema Principal:</span> Hipóxia (falta de oxigênio).</li>
+
+                <div class="flex flex-wrap justify-center gap-4 mb-8">                        <li><span class="font-semibold text-blue-600">Solução com Nanobolhas (Oxigênio):</span> Injeção de nanobolhas de O₂ para uma aeração supereficiente, aumentando o OD de forma estável. Isso acelera a decomposição aeróbica da matéria orgânica.</li>
+
+                    <button class="tab-btn active" data-target="custo-ambiental">Projeto Ambiental</button>                    </ul>
+
+                    <button class="tab-btn" data-target="custo-industrial">Projeto Industrial</button>                </div>
+
+                </div>                <div id="represas" class="tab-content hidden bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+
+                <div class="max-w-4xl mx-auto overflow-x-auto">                    <h3 class="text-2xl font-bold text-green-700 mb-3">Reservatórios: Água Pura e Segura</h3>
+
+                    <table class="w-full">                    <p class="text-gray-700 mb-4">Represas como Guarapiranga e Billings sofrem com a eutrofização: excesso de nutrientes que causa a proliferação de algas e cianobactérias, gerando toxinas e odor.</p>
+
+                        <thead>                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+
+                            <tr>                        <li><span class="font-semibold">Problema Principal:</span> "Florescimentos" de algas e cianobactérias.</li>
+
+                                <th>Etapa</th>                        <li><span class="font-semibold text-green-600">Solução com Nanobolhas (Ozônio):</span> Injeção de nanobolhas de Ozônio (O₃), um poderoso oxidante. Elas destroem a parede celular das algas, neutralizam toxinas e clarificam a água.</li>
+
+                                <th>Descrição</th>                    </ul>
+
+                                <th>Custo Estimado</th>                </div>
+
+                            </tr>                <!-- NOVO CONTEÚDO INDUSTRIAL -->
+
+                        </thead>                <div id="industria" class="tab-content hidden bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+
+                        <tbody id="custos-content">                    <h3 class="text-2xl font-bold text-purple-700 mb-3">Indústria e Reúso: Eficiência e Compliance</h3>
+
+                            <!-- Conteúdo dinâmico da tabela -->                    <p class="text-gray-700 mb-4">Fábricas, shoppings e grandes condomínios precisam tratar seus efluentes para descarte (compliance ambiental) ou para reúso (economia de água), enfrentando altos custos com químicos e lodo.</p>
+
+                        </tbody>                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+
+                    </table>                        <li><span class="font-semibold">Problema Principal:</span> Alta DQO (Demanda Química de Oxigênio), turbidez e custos de tratamento.</li>
+
+                </div>                        <li><span class="font-semibold text-purple-600">Solução com Nanobolhas (O₃/O₂):</span> Injeção de nanobolhas de Ozônio ou Oxigênio em reatores compactos. Elas quebram moléculas complexas (DQO), removem cor, odor e micro-poluentes, reduzindo o uso de químicos e o volume de lodo gerado, viabilizando o reúso de água no processo.</li>
+
+            </div>                    </ul>
+
+        </section>                </div>
+
             </div>
 
-            <div class="max-w-6xl mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-                    <div class="tech-step active cursor-pointer p-4 border-2 border-gray-200 rounded-lg bg-white shadow-sm transition-all duration-300" data-target="desc-1">
-                        <span class="text-3xl">1.</span>
-                        <h4 class="text-lg font-semibold mt-2 text-blue-700">Injeção e Saturação</h4>
+        <!-- Resultados Section -->        </section>
+
+        <section id="resultados" class="py-20 bg-white">
+
+            <div class="container mx-auto px-4">        <!-- Section 3: A Tecnologia -->
+
+                <h2 class="section-title">Resultados Esperados</h2>        <section id="tecnologia" class="py-20 px-4 bg-white border-t border-b border-gray-200">
+
+                <div class="flex flex-wrap justify-center gap-4 mb-8">            <div class="text-center max-w-3xl mx-auto mb-12">
+
+                    <button id="btn-tiete" class="tab-btn active">Rios (Oxigenação)</button>                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">A Solução: Tecnologia de Nanobolhas</h2>
+
+                    <button id="btn-represa" class="tab-btn">Represas (Clarificação)</button>                <p class="text-lg text-gray-600">As nanobolhas são bolhas de gás mil vezes menores que um fio de cabelo. Elas permanecem suspensas na água por dias ou semanas, atuando como um "exército" microscópico de tratamento. Clique nas etapas para ver como funcionam.</p>
+
+                    <button id="btn-industrial" class="tab-btn">Industrial (Reúso)</button>            </div>
+
+                </div>
+
+                <div class="chart-container">            <div class="max-w-6xl mx-auto">
+
+                    <canvas id="resultsChart"></canvas>                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+
+                </div>                    <div class="tech-step active cursor-pointer p-4 border-2 border-gray-200 rounded-lg bg-white shadow-sm transition-all duration-300" data-target="desc-1">
+
+            </div>                        <span class="text-3xl">1.</span>
+
+        </section>                        <h4 class="text-lg font-semibold mt-2 text-blue-700">Injeção e Saturação</h4>
+
                         <p class="text-sm text-gray-600">Gás (O₂ ou O₃) é injetado na água através de um gerador especial.</p>
-                    </div>
-                    <div class="tech-step cursor-pointer p-4 border-2 border-gray-200 rounded-lg bg-white shadow-sm transition-all duration-300" data-target="desc-2">
-                        <span class="text-3xl">2.</span>
-                        <h4 class="text-lg font-semibold mt-2 text-blue-700">Aumento de OD</h4>
-                        <p class="text-sm text-gray-600">As bolhas liberam o gás lentamente, elevando o oxigênio dissolvido.</p>
-                    </div>
-                    <div class="tech-step cursor-pointer p-4 border-2 border-gray-200 rounded-lg bg-white shadow-sm transition-all duration-300" data-target="desc-3">
-                        <span class="text-3xl">3.</span>
-                        <h4 class="text-lg font-semibold mt-2 text-blue-700">Radicais Livres</h4>
-                        <p class="text-sm text-gray-600">Ao colapsar, geram radicais hidroxila (OH) que destroem poluentes.</p>
-                    </div>
-                    <div class="tech-step cursor-pointer p-4 border-2 border-gray-200 rounded-lg bg-white shadow-sm transition-all duration-300" data-target="desc-4">
-                        <span class="text-3xl">4.</span>
-                        <h4 class="text-lg font-semibold mt-2 text-blue-700">Carga Negativa</h4>
-                        <p class="text-sm text-gray-600">Ajudam a flocular (agrupar) partículas suspensas, limpando a água.</p>
-                    </div>
-                </div>
 
-                <div class="bg-blue-50 p-8 rounded-lg border border-blue-200 min-h-[150px]">
-                    <div id="desc-1" class="tech-desc">
-                        <h4 class="text-xl font-bold text-gray-800 mb-2">Injeção e Saturação</h4>
-                        <p class="text-gray-700">Geradores de nanobolhas pressurizam o gás (como oxigênio puro ou ozônio) e o cisalham na água, criando bilhões de bolhas microscópicas. Diferente de bolhas normais que sobem e estouram, elas ficam suspensas devido ao seu tamanho e carga, saturando a coluna d'água.</p>
-                    </div>
-                    <div id="desc-2" class="tech-desc hidden">
+        <!-- Contato Section -->                    </div>
+
+        <section id="contato" class="py-20">                    <div class="tech-step cursor-pointer p-4 border-2 border-gray-200 rounded-lg bg-white shadow-sm transition-all duration-300" data-target="desc-2">
+
+            <div class="container mx-auto px-4">                        <span class="text-3xl">2.</span>
+
+                <h2 class="section-title">Entre em Contato</h2>                        <h4 class="text-lg font-semibold mt-2 text-blue-700">Aumento de OD</h4>
+
+                <div class="max-w-2xl mx-auto">                        <p class="text-sm text-gray-600">As bolhas liberam o gás lentamente, elevando o oxigênio dissolvido.</p>
+
+                    <form id="contact-form" class="space-y-6">                    </div>
+
+                        <div>                    <div class="tech-step cursor-pointer p-4 border-2 border-gray-200 rounded-lg bg-white shadow-sm transition-all duration-300" data-target="desc-3">
+
+                            <label for="name" class="block text-gray-700 mb-2">Nome</label>                        <span class="text-3xl">3.</span>
+
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-2 border rounded-lg">                        <h4 class="text-lg font-semibold mt-2 text-blue-700">Radicais Livres</h4>
+
+                        </div>                        <p class="text-sm text-gray-600">Ao colapsar, geram radicais hidroxila (OH) que destroem poluentes.</p>
+
+                        <div>                    </div>
+
+                            <label for="email" class="block text-gray-700 mb-2">Email</label>                    <div class="tech-step cursor-pointer p-4 border-2 border-gray-200 rounded-lg bg-white shadow-sm transition-all duration-300" data-target="desc-4">
+
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-2 border rounded-lg">                        <span class="text-3xl">4.</span>
+
+                        </div>                        <h4 class="text-lg font-semibold mt-2 text-blue-700">Carga Negativa</h4>
+
+                        <div>                        <p class="text-sm text-gray-600">Ajudam a flocular (agrupar) partículas suspensas, limpando a água.</p>
+
+                            <label for="message" class="block text-gray-700 mb-2">Mensagem</label>                    </div>
+
+                            <textarea id="message" name="message" rows="4" required class="w-full px-4 py-2 border rounded-lg"></textarea>                </div>
+
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-full">Enviar Mensagem</button>                <div class="bg-blue-50 p-8 rounded-lg border border-blue-200 min-h-[150px]">
+
+                    </form>                    <div id="desc-1" class="tech-desc">
+
+                </div>                        <h4 class="text-xl font-bold text-gray-800 mb-2">Injeção e Saturação</h4>
+
+            </div>                        <p class="text-gray-700">Geradores de nanobolhas pressurizam o gás (como oxigênio puro ou ozônio) e o cisalham na água, criando bilhões de bolhas microscópicas. Diferente de bolhas normais que sobem e estouram, elas ficam suspensas devido ao seu tamanho e carga, saturando a coluna d'água.</p>
+
+        </section>                    </div>
+
+    </main>                    <div id="desc-2" class="tech-desc hidden">
+
                         <h4 class="text-xl font-bold text-gray-800 mb-2">Aumento do Oxigênio Dissolvido (OD)</h4>
-                        <p class="text-gray-700">As nanobolhas de oxigênio atuam como "baterias" de gás. Elas liberam lentamente o O₂ na água, mantendo os níveis de OD elevados por muito mais tempo que a aeração convencional. Isso é vital para a biodegradação de poluentes por bactérias aeróbicas.</p>
+
+    <footer class="bg-gray-800 text-white py-8">                        <p class="text-gray-700">As nanobolhas de oxigênio atuam como "baterias" de gás. Elas liberam lentamente o O₂ na água, mantendo os níveis de OD elevados por muito mais tempo que a aeração convencional. Isso é vital para a biodegradação de poluentes por bactérias aeróbicas.</p>
+
+        <div class="container mx-auto px-4 text-center">                    </div>
+
+            <p>&copy; 2025 Projeto Hídrico SP. Todos os direitos reservados.</p>                    <div id="desc-3" class="tech-desc hidden">
+
+        </div>                        <h4 class="text-xl font-bold text-gray-800 mb-2">Geração de Radicais Livres</h4>
+
+    </footer>                        <p class="text-gray-700">Este é o efeito mais poderoso, especialmente com ozônio. Quando as nanobolhas finalmente colapsam (implodem), a pressão e temperatura em seu núcleo geram radicais hidroxila (•OH) - os oxidantes mais fortes na natureza. Eles destroem quimicamente matéria orgânica, bactérias, vírus e algas.</p>
+
                     </div>
-                    <div id="desc-3" class="tech-desc hidden">
-                        <h4 class="text-xl font-bold text-gray-800 mb-2">Geração de Radicais Livres</h4>
-                        <p class="text-gray-700">Este é o efeito mais poderoso, especialmente com ozônio. Quando as nanobolhas finalmente colapsam (implodem), a pressão e temperatura em seu núcleo geram radicais hidroxila (•OH) - os oxidantes mais fortes na natureza. Eles destroem quimicamente matéria orgânica, bactérias, vírus e algas.</p>
-                    </div>
-                    <div id="desc-4" class="tech-desc hidden">
-                        <h4 class="text-xl font-bold text-gray-800 mb-2">Carga Elétrica Negativa</h4>
-                        <p class="text-gray-700">Nanobolhas possuem uma carga elétrica negativa em sua superfície. Isso faz com que elas atraiam partículas com carga positiva (como íons de metais pesados e pequenas partículas de sujeira) e aglutinem partículas com carga oposta. Esse processo de micro-floculação facilita a decantação e remoção de contaminantes.</p>
+
+    <script src="assets/js/main.js"></script>                    <div id="desc-4" class="tech-desc hidden">
+
+</body>                        <h4 class="text-xl font-bold text-gray-800 mb-2">Carga Elétrica Negativa</h4>
+
+</html>                        <p class="text-gray-700">Nanobolhas possuem uma carga elétrica negativa em sua superfície. Isso faz com que elas atraiam partículas com carga positiva (como íons de metais pesados e pequenas partículas de sujeira) e aglutinem partículas com carga oposta. Esse processo de micro-floculação facilita a decantação e remoção de contaminantes.</p>
                     </div>
                 </div>
             </div>
