@@ -1,416 +1,198 @@
-<!DOCTYPE html><!DOCTYPE html>
-
-<html lang="pt-br"><html lang="pt-br">
-
-<head><head>
-
-    <meta charset="UTF-8">    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>MK Portfolio</title>    <title>Projeto Hídrico: Nanobolhas em São Paulo</title>
-
-        <!-- Chosen Palette: Semantic Water (Blue for Tech/Rivers, Green for Nature/Reservoirs, Purple for Industrial) -->
-
-    <!-- Google Fonts -->    <!-- Application Structure Plan: SPA vertical de página única, baseada no fluxo de ciclo de vida do projeto. A navegação rola suavemente. Interações principais envolvem alternar conteúdo e atualizar gráficos para tornar a proposta dinâmica. -->
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">    <!-- Visualization & Content Choices: 1. Contexto (Abas HTML/CSS). 2. Tecnologia (Diagrama HTML/CSS clicável). 3. Fluxo (HTML/CSS responsivo). 4. Mapa (Diagrama conceitual responsivo). 5. Cronograma (Timeline CSS com Abas). 6. Custos (Tabela HTML responsiva com Abas). 7. Resultados (Gráfico de Barras Chart.js com 3 botões semânticos). 8. Resumo (bloco de texto). -->
-
-        <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
-
-    <!-- Font Awesome -->    <script src="https://cdn.tailwindcss.com"></script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-        <style>
-
-    <!-- CSS -->        html {
-
-    <link rel="stylesheet" href="assets/css/style.css">            scroll-behavior: smooth;
-
-    <link rel="stylesheet" href="assets/css/animations.css">        }
-
-</head>        .chart-container {
-
-<body>            position: relative;
-
-    <!-- Preloader -->            width: 100%;
-
-    <div class="preloader">            max-width: 900px;
-
-        <div class="loader"></div>            margin-left: auto;
-
-    </div>            margin-right: auto;
-
-            height: 350px;
-
-    <!-- Header -->            max-height: 400px;
-
-    <header class="header">        }
-
-        <div class="container">        @media (min-width: 768px) {
-
-            <nav class="nav">            .chart-container {
-
-                <a href="#" class="logo">MK</a>                height: 400px;
-
-                <ul class="nav-list">            }
-
-                    <li><a href="#home" class="nav-link">Home</a></li>        }
-
-                    <li><a href="#sobre" class="nav-link">Sobre</a></li>        /* Cor semântica para abas de desafio */
-
-                    <li><a href="#projetos" class="nav-link">Projetos</a></li>        #desafio .tab-btn.active {
-
-                    <li><a href="#contato" class="nav-link">Contato</a></li>            background-color: #2563eb; /* Blue-600 */
-
-                </ul>            color: #ffffff;
-
-                <div class="menu-btn">            border-color: #2563eb;
-
-                    <span></span>        }
-
-                    <span></span>        /* Cor semântica para etapas de tecnologia */
-
-                    <span></span>        .tech-step.active {
-
-                </div>            border-color: #2563eb; /* Blue-600 */
-
-            </nav>            background-color: #eff6ff; /* Blue-50 */
-
-        </div>            transform: translateY(-4px);
-
-    </header>            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Hídrico: Nanobolhas em São Paulo</title>
+    <!-- Chosen Palette: Semantic Water (Blue for Tech/Rivers, Green for Nature/Reservoirs, Purple for Industrial) -->
+    <!-- Application Structure Plan: SPA vertical de página única, baseada no fluxo de ciclo de vida do projeto. A navegação rola suavemente. Interações principais envolvem alternar conteúdo e atualizar gráficos para tornar a proposta dinâmica. -->
+    <!-- Visualization & Content Choices: 1. Contexto (Abas HTML/CSS). 2. Tecnologia (Diagrama HTML/CSS clicável). 3. Fluxo (HTML/CSS responsivo). 4. Mapa (Diagrama conceitual responsivo). 5. Cronograma (Timeline CSS com Abas). 6. Custos (Tabela HTML responsiva com Abas). 7. Resultados (Gráfico de Barras Chart.js com 3 botões semânticos). 8. Resumo (bloco de texto). -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
         }
-
-    <!-- Hero Section -->        /* Cores semânticas para botões do gráfico */
-
-    <section id="home" class="hero">        #btn-tiete.active {
-
-        <div class="container">            background-color: #2563eb; /* Blue-600 */
-
-            <div class="hero-content">            color: white;
-
-                <h1 class="glitch-text" data-text="MK">MK</h1>            border-color: #2563eb;
-
-                <p class="typed-text"></p>        }
-
-                <div class="cta-buttons">        #btn-represa.active {
-
-                    <a href="#projetos" class="btn btn-primary">Ver Projetos</a>            background-color: #16a34a; /* Green-600 */
-
-                    <a href="#contato" class="btn btn-outline">Contato</a>            color: white;
-
-                </div>            border-color: #16a34a;
-
-            </div>        }
-
-        </div>        #btn-industrial.active {
-
-        <div class="scroll-indicator">            background-color: #7e22ce; /* Purple-700 */
-
-            <div class="mouse">            color: white;
-
-                <div class="wheel"></div>            border-color: #7e22ce;
-
-            </div>        }
-
-        </div>        /* Cores para abas de Cronograma e Custos */
-
-    </section>        .tab-secondary-btn.active {
-
+        /* Cor semântica para abas de desafio */
+        #desafio .tab-btn.active {
+            background-color: #2563eb; /* Blue-600 */
+            color: #ffffff;
+            border-color: #2563eb;
+        }
+        /* Cor semântica para etapas de tecnologia */
+        .tech-step.active {
+            border-color: #2563eb; /* Blue-600 */
+            background-color: #eff6ff; /* Blue-50 */
+            transform: translateY(-4px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        /* Cores semânticas para botões do gráfico */
+        #btn-tiete.active {
+            background-color: #2563eb; /* Blue-600 */
+            color: white;
+            border-color: #2563eb;
+        }
+        #btn-represa.active {
+            background-color: #16a34a; /* Green-600 */
+            color: white;
+            border-color: #16a34a;
+        }
+        #btn-industrial.active {
+            background-color: #7e22ce; /* Purple-700 */
+            color: white;
+            border-color: #7e22ce;
+        }
+        /* Cores para abas de Cronograma e Custos */
+        .tab-secondary-btn.active {
             font-weight: 600;
+            border-bottom-width: 2px;
+        }
+        #cronograma .tab-secondary-btn.active { border-color: #2563eb; color: #1d4ed8; }
+        #cronograma .tab-secondary-btn[data-target="timeline-industrial"].active { border-color: #7e22ce; color: #7e22ce; }
+        
+        #custos .tab-secondary-btn.active { border-color: #2563eb; color: #1d4ed8; }
+        #custos .tab-secondary-btn[data-target="cost-industrial"].active { border-color: #7e22ce; color: #7e22ce; }
 
-    <!-- Sobre Section -->            border-bottom-width: 2px;
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans leading-relaxed">
 
-    <section id="sobre" class="sobre">        }
-
-        <div class="container">        #cronograma .tab-secondary-btn.active { border-color: #2563eb; color: #1d4ed8; }
-
-            <h2 class="section-title">Sobre Mim</h2>        #cronograma .tab-secondary-btn[data-target="timeline-industrial"].active { border-color: #7e22ce; color: #7e22ce; }
-
-            <div class="sobre-content">        
-
-                <div class="sobre-text">        #custos .tab-secondary-btn.active { border-color: #2563eb; color: #1d4ed8; }
-
-                    <p>Olá! Eu sou Samuel, mais conhecido como MK.</p>        #custos .tab-secondary-btn[data-target="cost-industrial"].active { border-color: #7e22ce; color: #7e22ce; }
-
-                    <p>Estou em uma jornada para me tornar um desenvolvedor Full Stack. Atualmente, estou focado em aprender e dominar tecnologias web fundamentais.</p>
-
-                    <p>Como CEO do servidor Discord Crack Crew, desenvolvi habilidades em gestão de comunidade e liderança de projetos digitais.</p>    </style>
-
-                    <div class="skills"></head>
-
-                        <h3>Tecnologias:</h3><body class="bg-gray-50 text-gray-800 font-sans leading-relaxed">
-
-                        <div class="skill-icons">
-
-                            <i class="fab fa-html5" title="HTML5"></i>    <!-- Header & Navigation -->
-
-                            <i class="fab fa-css3-alt" title="CSS3"></i>    <header class="bg-white shadow-md sticky top-0 z-50 w-full">
-
-                            <i class="fab fa-js" title="JavaScript"></i>        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
-
-                            <i class="fab fa-python" title="Python"></i>            <div class="flex justify-between items-center h-16">
-
-                        </div>                <div class="flex-shrink-0 flex items-center">
-
-                    </div>                    <span class="text-2xl font-bold text-blue-700">Projeto Hídrico SP</span>
-
-                </div>                </div>
-
-                <div class="sobre-image">                <div class="hidden md:block">
-
-                    <div class="image-frame">                    <!-- Espaçamento ajustado para caber mais links -->
-
-                        <img src="https://placehold.co/400x400" alt="MK">                    <div class="ml-4 flex items-baseline space-x-2 lg:space-x-3">
-
-                    </div>                        <a href="#home" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Início</a>
-
-                </div>                        <a href="#desafio" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">O Desafio</a>
-
-            </div>                        <a href="#tecnologia" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Tecnologia</a>
-
-        </div>                        <a href="#implementacao" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Plano</a>
-
-    </section>                        <a href="#mapa" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Mapa</a>
-
+    <!-- Header & Navigation -->
+    <header class="bg-white shadow-md sticky top-0 z-50 w-full">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-2xl font-bold text-blue-700">Projeto Hídrico SP</span>
+                </div>
+                <div class="hidden md:block">
+                    <!-- Espaçamento ajustado para caber mais links -->
+                    <div class="ml-4 flex items-baseline space-x-2 lg:space-x-3">
+                        <a href="#home" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Início</a>
+                        <a href="#desafio" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">O Desafio</a>
+                        <a href="#tecnologia" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Tecnologia</a>
+                        <a href="#implementacao" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Plano</a>
+                        <a href="#mapa" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Mapa</a>
                         <a href="#cronograma" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Cronograma</a>
-
-    <!-- Projetos Section -->                        <a href="#custos" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Custos</a>
-
-    <section id="projetos" class="projetos">                        <a href="#resultados" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Resultados</a>
-
-        <div class="container">                        <a href="#resumo" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Resumo</a>
-
-            <h2 class="section-title">Projetos</h2>                        <a href="#escala" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Futuro</a>
-
-            <div class="projetos-grid">                    </div>
-
-                <div class="projeto-card">                </div>
-
-                    <div class="projeto-icon">                <div class="md:hidden">
-
-                        <i class="fab fa-discord"></i>                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-blue-700 focus:outline-none">
-
-                    </div>                        <span class="sr-only">Abrir menu</span>
-
-                    <h3>Crack Crew Discord</h3>                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-
-                    <p>Gerenciamento e desenvolvimento de uma comunidade ativa no Discord.</p>                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-
-                    <ul class="projeto-features">                        </svg>
-
-                        <li>Customização do servidor</li>                    </button>
-
-                        <li>Gestão de comunidade</li>                </div>
-
-                        <li>Integração de bots</li>            </div>
-
-                    </ul>        </nav>
-
-                    <a href="#" class="btn btn-outline">Ver Projeto</a>        <!-- Links do menu mobile atualizados -->
-
-                </div>        <div id="mobile-menu" class="md:hidden hidden">
-
+                        <a href="#custos" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Custos</a>
+                        <a href="#resultados" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Resultados</a>
+                        <a href="#resumo" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Resumo</a>
+                        <a href="#escala" class="nav-link text-gray-600 hover:text-blue-700 px-2 py-2 rounded-md text-sm font-medium">Futuro</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-blue-700 focus:outline-none">
+                        <span class="sr-only">Abrir menu</span>
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <!-- Links do menu mobile atualizados -->
+        <div id="mobile-menu" class="md:hidden hidden">
             <a href="#home" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Início</a>
+            <a href="#desafio" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">O Desafio</a>
+            <a href="#tecnologia" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Tecnologia</a>
+            <a href="#implementacao" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Plano</a>
+            <a href="#mapa" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Mapa</a>
+            <a href="#cronograma" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Cronograma</a>
+            <a href="#custos" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Custos</a>
+            <a href="#resultados" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Resultados</a>
+            <a href="#resumo" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Resumo</a>
+            <a href="#escala" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Futuro</a>
+        </div>
+    </header>
 
-                <div class="projeto-card">            <a href="#desafio" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">O Desafio</a>
-
-                    <div class="projeto-icon">            <a href="#tecnologia" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Tecnologia</a>
-
-                        <i class="fas fa-code"></i>            <a href="#implementacao" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Plano</a>
-
-                    </div>            <a href="#mapa" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Mapa</a>
-
-                    <h3>Portfolio</h3>            <a href="#cronograma" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Cronograma</a>
-
-                    <p>Desenvolvimento do meu portfolio pessoal com foco em design moderno.</p>            <a href="#custos" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Custos</a>
-
-                    <ul class="projeto-features">            <a href="#resultados" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Resultados</a>
-
-                        <li>Design Responsivo</li>            <a href="#resumo" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Resumo</a>
-
-                        <li>Animações Suaves</li>            <a href="#escala" class="block text-gray-600 hover:text-blue-700 px-3 py-2 rounded-md text-base font-medium">Futuro</a>
-
-                        <li>Performance Otimizada</li>        </div>
-
-                    </ul>    </header>
-
-                    <a href="#" class="btn btn-outline">Ver Projeto</a>
-
-                </div>    <!-- Main Content -->
-
+    <!-- Main Content -->
     <main>
 
-                <div class="projeto-card">
+        <!-- Section 1: Home -->
+        <section id="home" class="min-h-screen flex items-center justify-center bg-white px-4 pt-16 -mt-16">
+            <div class="text-center max-w-4xl">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-blue-800 mb-4">Projeto Hídrico: Nanobolhas para São Paulo</h1>
+                <p class="text-xl md:text-2xl text-gray-600 leading-relaxed">Uma proposta inovadora para o tratamento e revitalização das águas urbanas, industriais e para reúso, aplicando tecnologia de ponta aos desafios hídricos da metrópole.</p>
+                <div class="mt-12">
+                    <a href="#desafio" class="px-8 py-3 bg-blue-700 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-800 transition duration-300 text-lg">Descubra o Projeto</a>
+                </div>
+            </div>
+        </section>
 
-                    <div class="projeto-icon">        <!-- Section 1: Home -->
-
-                        <i class="fas fa-rocket"></i>        <section id="home" class="min-h-screen flex items-center justify-center bg-white px-4 pt-16 -mt-16">
-
-                    </div>            <div class="text-center max-w-4xl">
-
-                    <h3>Próximos Projetos</h3>                <h1 class="text-4xl md:text-6xl font-extrabold text-blue-800 mb-4">Projeto Hídrico: Nanobolhas para São Paulo</h1>
-
-                    <p>Em breve, novos projetos utilizando tecnologias modernas.</p>                <p class="text-xl md:text-2xl text-gray-600 leading-relaxed">Uma proposta inovadora para o tratamento e revitalização das águas urbanas, industriais e para reúso, aplicando tecnologia de ponta aos desafios hídricos da metrópole.</p>
-
-                    <ul class="projeto-features">                <div class="mt-12">
-
-                        <li>Em Desenvolvimento</li>                    <a href="#desafio" class="px-8 py-3 bg-blue-700 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-800 transition duration-300 text-lg">Descubra o Projeto</a>
-
-                        <li>Novas Tecnologias</li>                </div>
-
-                        <li>Inovação Constante</li>            </div>
-
-                    </ul>        </section>
-
-                    <a href="#" class="btn btn-outline">Em Breve</a>
-
-                </div>        <!-- Section 2: O Desafio de SP -->
-
-            </div>        <section id="desafio" class="py-20 px-4 container mx-auto">
-
-        </div>            <div class="text-center max-w-3xl mx-auto mb-12">
-
-    </section>                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Os Desafios Hídricos de São Paulo</h2>
-
+        <!-- Section 2: O Desafio de SP -->
+        <section id="desafio" class="py-20 px-4 container mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Os Desafios Hídricos de São Paulo</h2>
                 <p class="text-lg text-gray-600">A gestão da água em SP enfrenta múltiplos desafios. Nossas soluções de nanobolhas são desenhadas para atuar em três frentes críticas. Explore cada cenário abaixo.</p>
-
-    <!-- Contato Section -->            </div>
-
-    <section id="contato" class="contato">            
-
-        <div class="container">            <!-- Botões com flex-wrap para responsividade -->
-
-            <h2 class="section-title">Contato</h2>            <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8">
-
-            <div class="contato-content">                <button class="tab-btn active text-sm sm:text-base w-full md:w-auto font-semibold py-3 px-6 border-2 border-gray-300 rounded-lg shadow-sm transition duration-300 hover:border-blue-500" data-target="rios">Desafio 1: Rios Urbanos</button>
-
-                <div class="contato-info">                <button class="tab-btn text-sm sm:text-base w-full md:w-auto font-semibold py-3 px-6 border-2 border-gray-300 rounded-lg shadow-sm transition duration-300 hover:border-blue-500" data-target="represas">Desafio 2: Represas</button>
-
-                    <div class="contato-card">                <button class="tab-btn text-sm sm:text-base w-full md:w-auto font-semibold py-3 px-6 border-2 border-gray-300 rounded-lg shadow-sm transition duration-300 hover:border-blue-500" data-target="industria">Desafio 3: Indústria e Reúso</button>
-
-                        <i class="fas fa-envelope"></i>            </div>
-
-                        <h3>Email</h3>
-
-                        <a href="mailto:samucopL@gmail.com">samucopL@gmail.com</a>            <div class="max-w-4xl mx-auto">
-
-                    </div>                <div id="rios" class="tab-content bg-white p-8 rounded-xl shadow-lg border border-gray-200">
-
-                    <div class="contato-card">                    <h3 class="text-2xl font-bold text-blue-700 mb-3">Rios Urbanos: Recuperando a Vida</h3>
-
-                        <i class="fab fa-discord"></i>                    <p class="text-gray-700 mb-4">Rios como o Tietê e Pinheiros sofrem com alta carga de matéria orgânica e baixíssimos níveis de oxigênio dissolvido (OD), criando "zonas mortas" incapazes de sustentar vida aquática.</p>
-
-                        <h3>Discord</h3>                    <ul class="list-disc list-inside space-y-2 text-gray-700">
-
-                        <a href="#">Crack Crew</a>                        <li><span class="font-semibold">Problema Principal:</span> Hipóxia (falta de oxigênio).</li>
-
-                    </div>                        <li><span class="font-semibold text-blue-600">Solução com Nanobolhas (Oxigênio):</span> Injeção de nanobolhas de O₂ para uma aeração supereficiente, aumentando o OD de forma estável. Isso acelera a decomposição aeróbica da matéria orgânica.</li>
-
-                    <div class="contato-card">                    </ul>
-
-                        <i class="fab fa-github"></i>                </div>
-
-                        <h3>GitHub</h3>                <div id="represas" class="tab-content hidden bg-white p-8 rounded-xl shadow-lg border border-gray-200">
-
-                        <a href="https://github.com/Miokzz">@Miokzz</a>                    <h3 class="text-2xl font-bold text-green-700 mb-3">Reservatórios: Água Pura e Segura</h3>
-
-                    </div>                    <p class="text-gray-700 mb-4">Represas como Guarapiranga e Billings sofrem com a eutrofização: excesso de nutrientes que causa a proliferação de algas e cianobactérias, gerando toxinas e odor.</p>
-
-                </div>                    <ul class="list-disc list-inside space-y-2 text-gray-700">
-
-                <form id="contato-form" class="contato-form">                        <li><span class="font-semibold">Problema Principal:</span> "Florescimentos" de algas e cianobactérias.</li>
-
-                    <div class="form-group">                        <li><span class="font-semibold text-green-600">Solução com Nanobolhas (Ozônio):</span> Injeção de nanobolhas de Ozônio (O₃), um poderoso oxidante. Elas destroem a parede celular das algas, neutralizam toxinas e clarificam a água.</li>
-
-                        <input type="text" id="nome" required>                    </ul>
-
-                        <label for="nome">Nome</label>                </div>
-
-                    </div>                <!-- NOVO CONTEÚDO INDUSTRIAL -->
-
-                    <div class="form-group">                <div id="industria" class="tab-content hidden bg-white p-8 rounded-xl shadow-lg border border-gray-200">
-
-                        <input type="email" id="email" required>                    <h3 class="text-2xl font-bold text-purple-700 mb-3">Indústria e Reúso: Eficiência e Compliance</h3>
-
-                        <label for="email">Email</label>                    <p class="text-gray-700 mb-4">Fábricas, shoppings e grandes condomínios precisam tratar seus efluentes para descarte (compliance ambiental) ou para reúso (economia de água), enfrentando altos custos com químicos e lodo.</p>
-
-                    </div>                    <ul class="list-disc list-inside space-y-2 text-gray-700">
-
-                    <div class="form-group">                        <li><span class="font-semibold">Problema Principal:</span> Alta DQO (Demanda Química de Oxigênio), turbidez e custos de tratamento.</li>
-
-                        <textarea id="mensagem" required></textarea>                        <li><span class="font-semibold text-purple-600">Solução com Nanobolhas (O₃/O₂):</span> Injeção de nanobolhas de Ozônio ou Oxigênio em reatores compactos. Elas quebram moléculas complexas (DQO), removem cor, odor e micro-poluentes, reduzindo o uso de químicos e o volume de lodo gerado, viabilizando o reúso de água no processo.</li>
-
-                        <label for="mensagem">Mensagem</label>                    </ul>
-
-                    </div>                </div>
-
-                    <button type="submit" class="btn btn-primary">Enviar Mensagem</button>            </div>
-
-                </form>        </section>
-
+            </div>
+            
+            <!-- Botões com flex-wrap para responsividade -->
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8">
+                <button class="tab-btn active text-sm sm:text-base w-full md:w-auto font-semibold py-3 px-6 border-2 border-gray-300 rounded-lg shadow-sm transition duration-300 hover:border-blue-500" data-target="rios">Desafio 1: Rios Urbanos</button>
+                <button class="tab-btn text-sm sm:text-base w-full md:w-auto font-semibold py-3 px-6 border-2 border-gray-300 rounded-lg shadow-sm transition duration-300 hover:border-blue-500" data-target="represas">Desafio 2: Represas</button>
+                <button class="tab-btn text-sm sm:text-base w-full md:w-auto font-semibold py-3 px-6 border-2 border-gray-300 rounded-lg shadow-sm transition duration-300 hover:border-blue-500" data-target="industria">Desafio 3: Indústria e Reúso</button>
             </div>
 
-        </div>        <!-- Section 3: A Tecnologia -->
+            <div class="max-w-4xl mx-auto">
+                <div id="rios" class="tab-content bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                    <h3 class="text-2xl font-bold text-blue-700 mb-3">Rios Urbanos: Recuperando a Vida</h3>
+                    <p class="text-gray-700 mb-4">Rios como o Tietê e Pinheiros sofrem com alta carga de matéria orgânica e baixíssimos níveis de oxigênio dissolvido (OD), criando "zonas mortas" incapazes de sustentar vida aquática.</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li><span class="font-semibold">Problema Principal:</span> Hipóxia (falta de oxigênio).</li>
+                        <li><span class="font-semibold text-blue-600">Solução com Nanobolhas (Oxigênio):</span> Injeção de nanobolhas de O₂ para uma aeração supereficiente, aumentando o OD de forma estável. Isso acelera a decomposição aeróbica da matéria orgânica.</li>
+                    </ul>
+                </div>
+                <div id="represas" class="tab-content hidden bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                    <h3 class="text-2xl font-bold text-green-700 mb-3">Reservatórios: Água Pura e Segura</h3>
+                    <p class="text-gray-700 mb-4">Represas como Guarapiranga e Billings sofrem com a eutrofização: excesso de nutrientes que causa a proliferação de algas e cianobactérias, gerando toxinas e odor.</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li><span class="font-semibold">Problema Principal:</span> "Florescimentos" de algas e cianobactérias.</li>
+                        <li><span class="font-semibold text-green-600">Solução com Nanobolhas (Ozônio):</span> Injeção de nanobolhas de Ozônio (O₃), um poderoso oxidante. Elas destroem a parede celular das algas, neutralizam toxinas e clarificam a água.</li>
+                    </ul>
+                </div>
+                <!-- NOVO CONTEÚDO INDUSTRIAL -->
+                <div id="industria" class="tab-content hidden bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                    <h3 class="text-2xl font-bold text-purple-700 mb-3">Indústria e Reúso: Eficiência e Compliance</h3>
+                    <p class="text-gray-700 mb-4">Fábricas, shoppings e grandes condomínios precisam tratar seus efluentes para descarte (compliance ambiental) ou para reúso (economia de água), enfrentando altos custos com químicos e lodo.</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li><span class="font-semibold">Problema Principal:</span> Alta DQO (Demanda Química de Oxigênio), turbidez e custos de tratamento.</li>
+                        <li><span class="font-semibold text-purple-600">Solução com Nanobolhas (O₃/O₂):</span> Injeção de nanobolhas de Ozônio ou Oxigênio em reatores compactos. Elas quebram moléculas complexas (DQO), removem cor, odor e micro-poluentes, reduzindo o uso de químicos e o volume de lodo gerado, viabilizando o reúso de água no processo.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-    </section>        <section id="tecnologia" class="py-20 px-4 bg-white border-t border-b border-gray-200">
-
+        <!-- Section 3: A Tecnologia -->
+        <section id="tecnologia" class="py-20 px-4 bg-white border-t border-b border-gray-200">
             <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">A Solução: Tecnologia de Nanobolhas</h2>
+                <p class="text-lg text-gray-600">As nanobolhas são bolhas de gás mil vezes menores que um fio de cabelo. Elas permanecem suspensas na água por dias ou semanas, atuando como um "exército" microscópico de tratamento. Clique nas etapas para ver como funcionam.</p>
+            </div>
 
-    <!-- Footer -->                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">A Solução: Tecnologia de Nanobolhas</h2>
-
-    <footer class="footer">                <p class="text-lg text-gray-600">As nanobolhas são bolhas de gás mil vezes menores que um fio de cabelo. Elas permanecem suspensas na água por dias ou semanas, atuando como um "exército" microscópico de tratamento. Clique nas etapas para ver como funcionam.</p>
-
-        <div class="container">            </div>
-
-            <div class="footer-content">
-
-                <div class="footer-info">            <div class="max-w-6xl mx-auto">
-
-                    <h3>MK</h3>                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-
-                    <p>Desenvolvedor Full Stack em formação</p>                    <div class="tech-step active cursor-pointer p-4 border-2 border-gray-200 rounded-lg bg-white shadow-sm transition-all duration-300" data-target="desc-1">
-
-                </div>                        <span class="text-3xl">1.</span>
-
-                <div class="social-links">                        <h4 class="text-lg font-semibold mt-2 text-blue-700">Injeção e Saturação</h4>
-
-                    <a href="https://github.com/Miokzz" target="_blank"><i class="fab fa-github"></i></a>                        <p class="text-sm text-gray-600">Gás (O₂ ou O₃) é injetado na água através de um gerador especial.</p>
-
-                    <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>                    </div>
-
-                    <a href="#" target="_blank"><i class="fab fa-discord"></i></a>                    <div class="tech-step cursor-pointer p-4 border-2 border-gray-200 rounded-lg bg-white shadow-sm transition-all duration-300" data-target="desc-2">
-
-                </div>                        <span class="text-3xl">2.</span>
-
-            </div>                        <h4 class="text-lg font-semibold mt-2 text-blue-700">Aumento de OD</h4>
-
-            <div class="footer-bottom">                        <p class="text-sm text-gray-600">As bolhas liberam o gás lentamente, elevando o oxigênio dissolvido.</p>
-
-                <p>&copy; 2023 MK. Todos os direitos reservados.</p>                    </div>
-
-            </div>                    <div class="tech-step cursor-pointer p-4 border-2 border-gray-200 rounded-lg bg-white shadow-sm transition-all duration-300" data-target="desc-3">
-
-        </div>                        <span class="text-3xl">3.</span>
-
-    </footer>                        <h4 class="text-lg font-semibold mt-2 text-blue-700">Radicais Livres</h4>
-
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+                    <div class="tech-step active cursor-pointer p-4 border-2 border-gray-200 rounded-lg bg-white shadow-sm transition-all duration-300" data-target="desc-1">
+                        <span class="text-3xl">1.</span>
+                        <h4 class="text-lg font-semibold mt-2 text-blue-700">Injeção e Saturação</h4>
+                        <p class="text-sm text-gray-600">Gás (O₂ ou O₃) é injetado na água através de um gerador especial.</p>
+                    </div>
+                    <div class="tech-step cursor-pointer p-4 border-2 border-gray-200 rounded-lg bg-white shadow-sm transition-all duration-300" data-target="desc-2">
+                        <span class="text-3xl">2.</span>
+                        <h4 class="text-lg font-semibold mt-2 text-blue-700">Aumento de OD</h4>
+                        <p class="text-sm text-gray-600">As bolhas liberam o gás lentamente, elevando o oxigênio dissolvido.</p>
+                    </div>
+                    <div class="tech-step cursor-pointer p-4 border-2 border-gray-200 rounded-lg bg-white shadow-sm transition-all duration-300" data-target="desc-3">
+                        <span class="text-3xl">3.</span>
+                        <h4 class="text-lg font-semibold mt-2 text-blue-700">Radicais Livres</h4>
                         <p class="text-sm text-gray-600">Ao colapsar, geram radicais hidroxila (OH) que destroem poluentes.</p>
-
-    <!-- Scripts -->                    </div>
-
-    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>                    <div class="tech-step cursor-pointer p-4 border-2 border-gray-200 rounded-lg bg-white shadow-sm transition-all duration-300" data-target="desc-4">
-
-    <script src="assets/js/main.js"></script>                        <span class="text-3xl">4.</span>
-
-    <script src="assets/js/animations.js"></script>                        <h4 class="text-lg font-semibold mt-2 text-blue-700">Carga Negativa</h4>
-
-</body>                        <p class="text-sm text-gray-600">Ajudam a flocular (agrupar) partículas suspensas, limpando a água.</p>
-
-</html>                    </div>
+                    </div>
+                    <div class="tech-step cursor-pointer p-4 border-2 border-gray-200 rounded-lg bg-white shadow-sm transition-all duration-300" data-target="desc-4">
+                        <span class="text-3xl">4.</span>
+                        <h4 class="text-lg font-semibold mt-2 text-blue-700">Carga Negativa</h4>
+                        <p class="text-sm text-gray-600">Ajudam a flocular (agrupar) partículas suspensas, limpando a água.</p>
+                    </div>
                 </div>
 
                 <div class="bg-blue-50 p-8 rounded-lg border border-blue-200 min-h-[150px]">
