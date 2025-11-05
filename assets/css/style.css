@@ -1,4 +1,14 @@
-/* Estilos Gerais */
+/* Estilos Base */
+:root {
+    --primary-color: #2563eb;
+    --primary-dark: #1e40af;
+    --primary-light: #eff6ff;
+    --text-dark: #1f2937;
+    --text-light: #6b7280;
+    --bg-light: #f8f9fa;
+    --white: #ffffff;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -6,8 +16,8 @@ html {
 body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
-    color: #333;
-    background-color: #f8f9fa;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
 }
 
 .container {
